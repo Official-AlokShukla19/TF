@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-heritage-parchment text-heritage-ink font-body selection:bg-heritage-gold/30;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .paper-container {
+    @apply relative bg-heritage-paper shadow-2xl rounded-sm overflow-hidden;
+  }
+
+  .paper-texture {
+    @apply absolute inset-0 opacity-40 pointer-events-none bg-parchment-texture;
+  }
+
+  .noise-overlay {
+    @apply absolute inset-0 opacity-10 pointer-events-none bg-noise;
+  }
+
+  .editorial-link {
+    @apply relative inline-block transition-all duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-heritage-gold after:transition-all hover:after:w-full;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-heritage-ink text-heritage-paper font-serif italic tracking-wide transition-all hover:bg-heritage-gold hover:text-heritage-ink;
+  }
+
+  .manuscript-border {
+    @apply border-8 border-double border-heritage-gold/20 p-4;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-heritage-parchment;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-heritage-gold/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-heritage-gold;
+}
