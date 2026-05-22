@@ -16,16 +16,27 @@
 }
 
 @layer components {
-  .paper-container {
-    @apply relative bg-heritage-paper shadow-2xl rounded-sm overflow-hidden;
+  .book-perspective {
+    perspective: 2000px;
+    transform-style: preserve-3d;
   }
 
-  .paper-texture {
-    @apply absolute inset-0 opacity-40 pointer-events-none bg-parchment-texture;
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .page-shading {
+    @apply absolute inset-0 pointer-events-none z-50 transition-opacity duration-1000;
+    background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, transparent 10%, transparent 90%, rgba(0,0,0,0.1) 100%);
+  }
+
+  .paper-container {
+    @apply relative bg-heritage-paper shadow-lg border border-heritage-sepia/10 overflow-hidden;
   }
 
   .noise-overlay {
-    @apply absolute inset-0 opacity-10 pointer-events-none bg-noise;
+    @apply absolute inset-0 opacity-5 pointer-events-none;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
   }
 
   .editorial-link {
@@ -33,11 +44,49 @@
   }
 
   .btn-primary {
-    @apply px-8 py-3 bg-heritage-ink text-heritage-paper font-serif italic tracking-wide transition-all hover:bg-heritage-gold hover:text-heritage-ink;
+    @apply btn-manuscript;
   }
 
   .manuscript-border {
-    @apply border-8 border-double border-heritage-gold/20 p-4;
+    @apply border-2 border-heritage-gold/30 p-2;
+  }
+
+  .manuscript-container {
+    @apply relative bg-heritage-parchment border-[8px] md:border-[20px] border-heritage-sepia/10 shadow-inner overflow-hidden transition-all duration-700;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.1), 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .paper-texture {
+    @apply absolute inset-0 opacity-40 pointer-events-none;
+    background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+  }
+
+  .book-fold {
+    @apply absolute left-1/2 top-0 bottom-0 w-20 -translate-x-1/2 z-20 pointer-events-none;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 55%, transparent);
+  }
+
+  .flourish {
+    @apply flex items-center justify-center gap-4 text-heritage-gold/60 my-6;
+  }
+
+  .flourish::before, .flourish::after {
+    content: "❦";
+    @apply text-xl;
+  }
+
+  .flourish-line {
+    @apply h-px w-24 bg-gradient-to-r from-transparent via-heritage-gold/40 to-transparent;
+  }
+
+  .sketch-card {
+    @apply bg-heritage-paper/80 border border-heritage-sepia/20 p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1;
+    background-image: url('https://www.transparenttextures.com/patterns/rough-paper.png');
+  }
+
+  .btn-manuscript {
+    @apply px-6 py-2 bg-heritage-maroon text-heritage-paper font-serif italic text-sm transition-all hover:bg-heritage-sepia active:scale-95;
+    clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
   }
 }
 

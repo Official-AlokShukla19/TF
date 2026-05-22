@@ -4,49 +4,38 @@ import { Sparkles, Zap, Globe, Cpu, ArrowRight } from 'lucide-react';
 
 const Innovation = () => {
   return (
-    <div className="bg-heritage-midnight text-heritage-paper min-h-screen">
-      {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Cinematic Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(26,35,126,0.3)_0%,_transparent_70%)]" />
-          <div className="absolute inset-0 opacity-20 noise-overlay" />
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-heritage-indigo/20 blur-[120px] rounded-full" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-heritage-gold/10 blur-[120px] rounded-full" />
-        </div>
-
-        <div className="max-w-5xl mx-auto text-center px-6 relative z-10">
+    <div className="bg-heritage-parchment min-h-screen pt-32 pb-20 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto manuscript-container p-4 md:p-16 relative">
+        <div className="paper-texture opacity-30" />
+        
+        {/* Hero Section */}
+        <section className="relative z-10 mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
+            className="text-center"
           >
-            <span className="inline-block px-4 py-1 border border-heritage-gold/40 text-heritage-gold text-xs uppercase tracking-[0.5em] font-bold mb-8">Chapter IV</span>
-            <h1 className="text-7xl md:text-9xl font-serif font-black mb-10 tracking-tight leading-tight">
-              Innovative <br /> <span className="italic text-heritage-gold/80">Horizons.</span>
+            <span className="inline-block px-4 py-1 border border-heritage-gold/40 text-heritage-gold text-[10px] uppercase tracking-[0.5em] font-bold mb-6 md:mb-8">Chapter IV</span>
+            <h1 className="text-4xl md:text-8xl font-serif font-black mb-6 md:mb-10 tracking-tight leading-tight text-heritage-ink">
+              Innovative <br /> <span className="italic text-heritage-maroon">Horizons.</span>
             </h1>
-            <p className="text-xl md:text-3xl font-body italic text-heritage-paper/60 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-3xl font-body italic text-heritage-ink/60 leading-relaxed max-w-3xl mx-auto">
               Designing social transformation rooted in humanity, powered by vision, and sustained by technology.
             </p>
+            <div className="flourish">
+              <div className="flourish-line !w-32 md:w-48" />
+            </div>
           </motion.div>
-        </div>
+        </section>
 
-        {/* Floating element */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-4 text-heritage-gold/40">
-           <div className="w-12 h-px bg-current" />
-           <span className="text-[10px] uppercase tracking-widest font-bold">The Future is Human</span>
-           <div className="w-12 h-px bg-current" />
-        </div>
-      </section>
-
-      {/* Visionary Section */}
-      <section className="py-32 px-6 relative">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        {/* Visionary Section */}
+        <section className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-24 md:mb-32">
           <div>
-            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-12 text-heritage-paper leading-tight">
+            <h2 className="text-3xl md:text-6xl font-serif font-bold mb-8 md:mb-12 text-heritage-ink leading-tight">
               A New Dawn for <br /> Social Change
             </h2>
-            <div className="space-y-8 text-lg font-body text-heritage-paper/70 leading-relaxed">
+            <div className="space-y-8 text-lg font-body text-heritage-ink/70 leading-relaxed italic">
               <p>
                 Innovation at Tatwamasi is not about replacing traditions, but about augmenting them. We leverage modern tools to solve age-old problems, from AI-driven agricultural planning to blockchain for transparent donation tracking.
               </p>
@@ -55,58 +44,66 @@ const Innovation = () => {
               </p>
             </div>
             
-            <Link to="/" className="mt-12 flex items-center gap-4 text-heritage-gold font-serif italic text-2xl group">
+            <Link to="/" className="mt-12 flex items-center gap-4 text-heritage-maroon font-serif italic text-2xl group">
               Join the Vision <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
           
           <div className="relative">
-            <div className="aspect-square rounded-full border border-heritage-gold/20 p-8 relative animate-spin-slow">
-              <div className="absolute inset-0 bg-gradient-to-tr from-heritage-indigo/20 to-transparent rounded-full" />
-              <div className="w-full h-full rounded-full overflow-hidden border border-heritage-gold/30 p-2">
-                 <img 
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Future Vision" 
-                  className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-1000"
-                />
-              </div>
+            <div className="paper-container manuscript-border !p-1 rotate-1 shadow-2xl overflow-hidden rounded-full">
+               <img 
+                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" 
+                alt="Future Vision" 
+                className="w-full aspect-square object-cover grayscale sepia-[0.3] hover:grayscale-0 transition-all duration-1000"
+              />
             </div>
             {/* Floating stats */}
-            <div className="absolute top-0 right-0 bg-heritage-midnight border border-heritage-gold/20 p-6 rounded-sm shadow-2xl backdrop-blur-xl">
-               <div className="text-3xl font-serif text-heritage-gold">100%</div>
-               <div className="text-[10px] uppercase tracking-widest font-bold">Transparency</div>
+            <div className="absolute top-0 right-0 bg-heritage-paper/90 border border-heritage-sepia/20 p-4 shadow-xl backdrop-blur-sm">
+               <div className="text-2xl font-serif text-heritage-maroon">100%</div>
+               <div className="text-[8px] uppercase tracking-widest font-bold">Transparency</div>
             </div>
-            <div className="absolute bottom-10 -left-10 bg-heritage-midnight border border-heritage-gold/20 p-6 rounded-sm shadow-2xl backdrop-blur-xl">
-               <div className="text-3xl font-serif text-heritage-gold">2030</div>
-               <div className="text-[10px] uppercase tracking-widest font-bold">Horizon Goal</div>
+            <div className="absolute bottom-10 -left-10 bg-heritage-paper/90 border border-heritage-sepia/20 p-4 shadow-xl backdrop-blur-sm">
+               <div className="text-2xl font-serif text-heritage-maroon">2030</div>
+               <div className="text-[8px] uppercase tracking-widest font-bold">Horizon Goal</div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Technology Pillars */}
-      <section className="py-32 px-6 bg-heritage-indigo/10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Technology Pillars */}
+        <section className="relative z-10 py-20 px-8 sketch-card mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: Zap, title: "Agile Growth", desc: "Rapid prototyping of social solutions." },
               { icon: Cpu, title: "Ethical AI", desc: "Using data to drive decisions with compassion." },
               { icon: Globe, title: "Global Reach", desc: "Connecting grassroots movements worldwide." },
               { icon: Sparkles, title: "Sustainable Dev", desc: "Ensuring progress doesn't cost the Earth." }
             ].map((pillar, i) => (
-              <motion.div 
+              <div 
                 key={i}
-                whileHover={{ y: -10 }}
-                className="p-10 bg-white/5 border border-white/10 rounded-sm hover:border-heritage-gold/50 transition-all duration-500"
+                className="p-6 md:border-r last:border-0 border-heritage-sepia/10"
               >
-                <pillar.icon className="text-heritage-gold mb-8" size={32} />
-                <h3 className="text-xl font-serif font-bold mb-4">{pillar.title}</h3>
-                <p className="text-sm text-heritage-paper/50 leading-relaxed">{pillar.desc}</p>
-              </motion.div>
+                <pillar.icon className="text-heritage-gold mb-6" size={32} />
+                <h3 className="text-xl font-serif font-bold mb-4 text-heritage-ink">{pillar.title}</h3>
+                <p className="text-sm text-heritage-ink/50 leading-relaxed italic">{pillar.desc}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Return to Home CTA */}
+        <section className="relative z-10 text-center border-t border-heritage-sepia/10 pt-20 pb-10">
+          <Link 
+            to="/" 
+            className="group inline-flex flex-col items-center gap-6"
+          >
+            <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-heritage-gold">End of Chapters</span>
+            <h2 className="text-4xl md:text-6xl font-serif italic text-heritage-ink group-hover:text-heritage-maroon transition-colors">Back to Our Story</h2>
+            <div className="w-16 h-16 rounded-full border border-heritage-maroon flex items-center justify-center text-heritage-maroon group-hover:bg-heritage-maroon group-hover:text-heritage-paper transition-all">
+              <ArrowRight size={32} className="rotate-180" />
+            </div>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 };

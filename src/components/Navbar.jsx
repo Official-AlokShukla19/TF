@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, BookOpen } from 'lucide-react';
+import logo from '../assets/Tw Fn.jpeg';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,55 +22,59 @@ const Navbar = () => {
     { name: 'Education & Growth', path: '/education-growth' },
     { name: 'Community Roots', path: '/community-roots' },
     { name: 'Innovative Horizons', path: '/innovative-horizons' },
+    { name: 'Contact', path: '/contact' },
   ];
 
-  const scrollToFooter = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth'
-    });
-    setIsMobileMenuOpen(false);
-  };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4 bg-heritage-parchment/80 backdrop-blur-md shadow-sm' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4 bg-heritage-parchment/90 backdrop-blur-md shadow-lg border-b border-heritage-sepia/10' : 'py-8 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-4 group shrink-0">
           <div className="relative">
-            <BookOpen className="text-heritage-gold w-8 h-8 transition-transform group-hover:rotate-12" />
+            <img 
+              src={logo} 
+              alt="Tatwamasi Logo" 
+              className="w-10 h-10 md:w-12 md:h-12 object-cover rounded-full border-2 border-heritage-gold/30 transition-transform group-hover:rotate-12 group-hover:scale-110 shadow-md"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <BookOpen className="hidden text-heritage-gold w-7 h-7 md:w-8 md:h-8" />
             <div className="absolute -inset-1 bg-heritage-gold/20 blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl md:text-2xl font-serif font-bold tracking-tight text-heritage-ink uppercase">Tatwamasi</span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-heritage-gold font-sans font-semibold -mt-1">Foundation</span>
+            <span className="text-lg md:text-2xl font-serif font-bold tracking-tight text-heritage-ink uppercase leading-none">Tatwamasi</span>
+            <span className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-heritage-gold font-sans font-semibold mt-0.5">Foundation</span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`editorial-link text-xs uppercase tracking-[0.2em] font-medium transition-colors ${location.pathname === link.path ? 'text-heritage-gold' : 'text-heritage-ink hover:text-heritage-gold'}`}
+              className={`editorial-link text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-300 ${location.pathname === link.path ? 'text-heritage-maroon' : 'text-heritage-ink hover:text-heritage-gold'}`}
             >
               {link.name}
             </Link>
           ))}
-          <button 
-            onClick={scrollToFooter}
-            className="btn-primary text-xs uppercase tracking-widest px-6 py-2.5"
+          <Link 
+            to="/support"
+            className="btn-manuscript text-[10px] uppercase tracking-widest px-5 py-2 whitespace-nowrap shadow-sm hover:shadow-md transition-shadow"
           >
             Support Us
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-heritage-ink"
+          className="lg:hidden text-heritage-ink p-2 hover:bg-heritage-maroon/5 rounded-full transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -77,36 +82,43 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[60] bg-heritage-paper p-8 flex flex-col justify-center gap-12"
+            initial={{ opacity: 0, scaleY: 0, originY: 0 }}
+            animate={{ opacity: 1, scaleY: 1, originY: 0 }}
+            exit={{ opacity: 0, scaleY: 0, originY: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[60] bg-heritage-parchment p-8 flex flex-col justify-center gap-12"
           >
+            <div className="paper-texture opacity-30" />
             <button 
-              className="absolute top-8 right-8 text-heritage-ink"
+              className="absolute top-8 right-8 text-heritage-ink hover:text-heritage-maroon transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <X size={32} />
             </button>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6 relative z-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-4xl font-serif italic text-heritage-ink hover:text-heritage-gold transition-colors"
+                  className="group flex flex-col"
                 >
-                  {link.name}
+                  <span className="text-[10px] uppercase tracking-[0.5em] text-heritage-gold font-bold mb-2">
+                    {link.path === '/' ? 'Home' : 'Chapter'}
+                  </span>
+                  <span className="text-4xl font-serif italic text-heritage-ink group-hover:text-heritage-maroon transition-colors">
+                    {link.name}
+                  </span>
                 </Link>
               ))}
             </div>
-            <button 
-              onClick={scrollToFooter}
-              className="btn-primary w-full text-lg"
+            <Link 
+              to="/support"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="btn-manuscript w-full text-xl py-6 relative z-10"
             >
               Support Our Mission
-            </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

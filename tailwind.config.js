@@ -8,18 +8,15 @@ export default {
     extend: {
       colors: {
         heritage: {
-          parchment: "#F4F1EA",
-          paper: "#FCFBF7",
-          ink: "#2D2926",
-          gold: "#D4AF37",
-          mustard: "#E3B448",
-          burntOrange: "#BF5700",
-          terracotta: "#E2725B",
-          clay: "#A0522D",
-          indigo: "#1A237E",
-          midnight: "#0D1117",
-          maroon: "#800000",
-          olive: "#556B2F",
+          parchment: "#E8D9C5",
+          paper: "#F4EBD0",
+          ink: "#3E2723",
+          gold: "#B8860B",
+          mustard: "#C5A059",
+          burntOrange: "#8B4513",
+          terracotta: "#A0522D",
+          maroon: "#4A0E0E",
+          sepia: "#704214",
         }
       },
       fontFamily: {
